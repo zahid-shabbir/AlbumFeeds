@@ -8,7 +8,4 @@ struct Constants {
     struct Apis {
         static let albumUrl = "https://jsonplaceholder.typicode.com/photos"
     }
-    struct Cells {
-        static let albumCellIdentifier = "AlbumTableViewCell"
-    }
 }

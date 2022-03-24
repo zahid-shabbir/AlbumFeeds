@@ -5,21 +5,21 @@
 //  Created by Yong Su on 5/30/16.
 //  Copyright © 2016 Yong Su. All rights reserved.
 //
-    import UIKit
+import UIKit
 protocol CollapsibleTableViewHeaderDelegate: AnyObject {
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int)
 }
-    class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
+class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
     weak var delegate: CollapsibleTableViewHeaderDelegate?
     var section: Int = 0
     let titleLabel = UILabel()
     let arrowLabel = UILabel()
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-            // Content View
+        // Content View
         contentView.backgroundColor = .systemGray
-            let marginGuide = contentView.layoutMarginsGuide
-            // Arrow label
+        let marginGuide = contentView.layoutMarginsGuide
+        // Arrow label
         contentView.addSubview(arrowLabel)
         arrowLabel.textColor = .label
         arrowLabel.text = ">"
@@ -28,7 +28,7 @@ protocol CollapsibleTableViewHeaderDelegate: AnyObject {
         arrowLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
         arrowLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         arrowLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
-            // Title label
+        // Title label
         contentView.addSubview(titleLabel)
         titleLabel.textColor = .label
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ protocol CollapsibleTableViewHeaderDelegate: AnyObject {
         titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
-            //
+        //
         // Call tapHeader when tapping on this header
         //
         addGestureRecognizer(UITapGestureRecognizer(target: self,
@@ -52,7 +52,7 @@ protocol CollapsibleTableViewHeaderDelegate: AnyObject {
         guard let cell = gestureRecognizer.view as? CollapsibleTableViewHeader else {
             return
         }
-            delegate?.toggleSection(self, section: cell.section)
+        delegate?.toggleSection(self, section: cell.section)
     }
     func setCollapsed(_ collapsed: Bool) {
         //

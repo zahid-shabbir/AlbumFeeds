@@ -27,7 +27,7 @@ class AlbumTableViewCell: UITableViewCell {
         self.thumbnailImageView.clipsToBounds = false
         self.thumbnailImageView.layer.masksToBounds = true
     }
-    
+
     /// Generating spellable ids
     /// - Parameter albumId: album id
     /// - Returns: a string with original id and spellable text

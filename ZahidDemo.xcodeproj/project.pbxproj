@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3A342A9325E8C3CF00DF8577 /* LZDropMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A342A9225E8C3CF00DF8577 /* LZDropMenu.swift */; };
+		52F73F2827EC602400E6A645 /* RegisterCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F73F2727EC602400E6A645 /* RegisterCells.swift */; };
+		52F73F3527EC65F700E6A645 /* WebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F73F3127EC65F700E6A645 /* WebServiceProtocol.swift */; };
+		52F73F3627EC65F700E6A645 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F73F3227EC65F700E6A645 /* ServiceManager.swift */; };
+		52F73F3727EC65F700E6A645 /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F73F3427EC65F700E6A645 /* AlbumService.swift */; };
 		5D05908B25ADBDF40032D2FD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D05908A25ADBDF40032D2FD /* BaseViewController.swift */; };
 		5D0590C625AE53990032D2FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0590C525AE53990032D2FD /* Constants.swift */; };
 		5D0ECA0025ADB16D0074448C /* ViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0EC9FF25ADB16D0074448C /* ViewModal.swift */; };
@@ -17,7 +21,6 @@
 		5D39B31925AD930500D99AD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D39B31825AD930500D99AD0 /* Assets.xcassets */; };
 		5D39B31C25AD930500D99AD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D39B31A25AD930500D99AD0 /* LaunchScreen.storyboard */; };
 		5D71563C25B9430900A13589 /* ZahidDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D71563B25B9430900A13589 /* ZahidDemoTests.swift */; };
-		5D8E48F025AD93F000E78E6F /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8E48EF25AD93F000E78E6F /* ServiceManager.swift */; };
 		5DBC930E25B753E0008090C4 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC930C25B753E0008090C4 /* AlbumViewController.swift */; };
 		5DBC930F25B753E0008090C4 /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DBC930D25B753E0008090C4 /* AlbumViewController.xib */; };
 		5DBC932025B760BE008090C4 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC931E25B760BE008090C4 /* AlbumTableViewCell.swift */; };
@@ -47,6 +50,10 @@
 /* Begin PBXFileReference section */
 		26E73892AFD616AFD954FBFC /* Pods_ZahidDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZahidDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A342A9225E8C3CF00DF8577 /* LZDropMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZDropMenu.swift; sourceTree = "<group>"; };
+		52F73F2727EC602400E6A645 /* RegisterCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCells.swift; sourceTree = "<group>"; };
+		52F73F3127EC65F700E6A645 /* WebServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceProtocol.swift; sourceTree = "<group>"; };
+		52F73F3227EC65F700E6A645 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		52F73F3427EC65F700E6A645 /* AlbumService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
 		5816F7DD641A1CAE97421D85 /* Pods_ZahidDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZahidDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D05908A25ADBDF40032D2FD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5D0590C525AE53990032D2FD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -61,7 +68,6 @@
 		5D71563925B9430900A13589 /* ZahidDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZahidDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D71563B25B9430900A13589 /* ZahidDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZahidDemoTests.swift; sourceTree = "<group>"; };
 		5D71563D25B9430900A13589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D8E48EF25AD93F000E78E6F /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		5DBC930C25B753E0008090C4 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		5DBC930D25B753E0008090C4 /* AlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumViewController.xib; sourceTree = "<group>"; };
 		5DBC931E25B760BE008090C4 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +113,24 @@
 				26E73892AFD616AFD954FBFC /* Pods_ZahidDemoTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52F73F3027EC65F700E6A645 /* Service Manager */ = {
+			isa = PBXGroup;
+			children = (
+				52F73F3127EC65F700E6A645 /* WebServiceProtocol.swift */,
+				52F73F3227EC65F700E6A645 /* ServiceManager.swift */,
+				52F73F3327EC65F700E6A645 /* Services */,
+			);
+			path = "Service Manager";
+			sourceTree = "<group>";
+		};
+		52F73F3327EC65F700E6A645 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				52F73F3427EC65F700E6A645 /* AlbumService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		5D05908125ADBD420032D2FD /* Controllers */ = {
@@ -199,8 +223,9 @@
 		5D8E48FD25AD946400E78E6F /* Helping Files */ = {
 			isa = PBXGroup;
 			children = (
+				52F73F3027EC65F700E6A645 /* Service Manager */,
+				52F73F2727EC602400E6A645 /* RegisterCells.swift */,
 				5D0590C525AE53990032D2FD /* Constants.swift */,
-				5D8E48EF25AD93F000E78E6F /* ServiceManager.swift */,
 				5D0ECA0C25ADB2E40074448C /* Extensions.swift */,
 			);
 			path = "Helping Files";
@@ -267,6 +292,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D39B33625AD930500D99AD0 /* Build configuration list for PBXNativeTarget "ZahidDemo" */;
 			buildPhases = (
+				52F73F3A27EC712D00E6A645 /* Swift Lint */,
 				5D39B30825AD930200D99AD0 /* Sources */,
 				5D39B30925AD930200D99AD0 /* Frameworks */,
 				5D39B30A25AD930200D99AD0 /* Resources */,
@@ -386,6 +412,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52F73F3A27EC712D00E6A645 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n         #echo \"Swift Lint has been paused for a while\"\n    swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5D39B30825AD930200D99AD0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -396,13 +443,16 @@
 				5D0ECA0D25ADB2E40074448C /* Extensions.swift in Sources */,
 				5D39B31025AD930200D99AD0 /* AppDelegate.swift in Sources */,
 				5D39B31225AD930200D99AD0 /* SceneDelegate.swift in Sources */,
-				5D8E48F025AD93F000E78E6F /* ServiceManager.swift in Sources */,
+				52F73F2827EC602400E6A645 /* RegisterCells.swift in Sources */,
 				5D05908B25ADBDF40032D2FD /* BaseViewController.swift in Sources */,
 				5DBC932025B760BE008090C4 /* AlbumTableViewCell.swift in Sources */,
 				5D0ECA0025ADB16D0074448C /* ViewModal.swift in Sources */,
 				5DC4573625E7F896002455BD /* AlbumModel.swift in Sources */,
 				5DBC930E25B753E0008090C4 /* AlbumViewController.swift in Sources */,
+				52F73F3527EC65F700E6A645 /* WebServiceProtocol.swift in Sources */,
 				3A342A9325E8C3CF00DF8577 /* LZDropMenu.swift in Sources */,
+				52F73F3627EC65F700E6A645 /* ServiceManager.swift in Sources */,
+				52F73F3727EC65F700E6A645 /* AlbumService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

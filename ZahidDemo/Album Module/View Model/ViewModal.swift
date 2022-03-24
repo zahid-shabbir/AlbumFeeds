@@ -11,9 +11,11 @@ class UserViewModal {
     ///   - url: url string of your request
     ///   - completion: on completion it'll return `[AlbumModel]`
     func getAlbums(with url: String, completion: @escaping ([AlbumModel]) -> Void ) {
-        makeGenericRequest(serviceUrl: url) { (albums: [AlbumModel]?, _) in
+
+        makeRequest(of: AlbumService.getAlbums) { (albums: [AlbumModel]?, _) in
             completion(albums ?? [])
         }
+
     }
     /// It prepare our `[AlbumModel]` to `[AlbumSectionModel]`
     /// - Parameters:
@@ -28,7 +30,7 @@ class UserViewModal {
             sections = sections.sorted { $0.id < $1.id }
         completion(sections)
     }
-    
+
     /// Use this function to search through the album id
     /// - Parameters:
     ///   - searchText: it should be album id that is required to look up

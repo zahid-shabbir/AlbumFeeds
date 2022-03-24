@@ -80,22 +80,21 @@ extension AlbumViewController {
                                            action: #selector(filterButtonTapped))
         navigationItem.rightBarButtonItems = [filterButton, searchButton]
     }
-    
-    
-    /// preparing necessary views 
+
+    /// preparing necessary views
     func setupViews() {
         self.title = "Albums"
         viewModel = UserViewModal()
-        self.albumTableView.register(UINib(nibName: Constants.Cells.albumCellIdentifier, bundle: nil),
-                                     forCellReuseIdentifier: Constants.Cells.albumCellIdentifier)
+        self.albumTableView.registerNib(AlbumTableViewCell.self)
+        // self.albumTableView.registerNib(CollapsibleTableViewHeader.self)
         xOfrightNav = self.view.frame.size.width - 110
         self.searchBar = UISearchBar(frame: CGRect(x: xOfrightNav, y: 0, width: 30, height: 44))
-        self.searchBar.placeholder = "Search album"
+        self.searchBar.placeholder = "Search by album number"
         searchBar.delegate = self
         searchBar.searchBarStyle = UISearchBar.Style.minimal
         searchBarButtonItem = navigationItem.rightBarButtonItem
     }
-    
+
     /// Setting up Search bar with frame to animte it
     fileprivate func showSearchBar() {
         UIView.animate(withDuration: 0.5) {
@@ -121,6 +120,7 @@ extension AlbumViewController {
     func prepareDropdown() {
         dropDownButton = DropDownBtn()
         UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.addSubview(dropDownButton!)
+
         dropDownButton?.translatesAutoresizingMaskIntoConstraints = false
         dropDownButton?.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60).isActive = true
         dropDownButton?.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
@@ -131,7 +131,7 @@ extension AlbumViewController {
         dropDownButton?.showDropDownMenu()
         dropDownButton?.backgroundColor = UIColor.red
     }
-    
+
     /// Request to fetch Albums to populate in tbaleview
     func fetchAlbums() {
         guard Reachability.isConnectedToNetwork else {
@@ -169,7 +169,8 @@ extension AlbumViewController: UITableViewDataSource, UITableViewDelegate {
         return CGFloat(50)
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
+
+        let header = CollapsibleTableViewHeader(reuseIdentifier: "header")
         header.titleLabel.text = "Albums # \(sections[section].id)"
         header.setCollapsed(sections[section].collapsed)
         header.section = section
@@ -177,7 +178,7 @@ extension AlbumViewController: UITableViewDataSource, UITableViewDelegate {
         return header
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.albumCellIdentifier) as? AlbumTableViewCell else { return UITableViewCell() }
+        let cell: AlbumTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         let album = sections[indexPath.section].items[indexPath.row]
         cell.populate(with: album)
         return cell
@@ -216,4 +217,3 @@ extension AlbumViewController: dropDownDelegate {
         self.albumTableView.reloadWithAnimation()
     }
 }
-
