@@ -6,10 +6,11 @@
 //
 import UIKit
 class AlbumViewController: BaseViewController, UISearchBarDelegate {
-    // MARK: - Connections
+    // MARK: - Connections & Variables
     @IBOutlet weak var albumTableView: UITableView!
-    // MARK: - Variables
-    var viewModel: UserViewModal?
+
+    // - Variables
+    var viewModel: UserViewModal!
     var searchBar = UISearchBar()
     var searchBarButtonItem: UIBarButtonItem?
     var dropDownButton: DropDownBtn?
@@ -132,21 +133,35 @@ extension AlbumViewController {
         dropDownButton?.backgroundColor = UIColor.red
     }
 
+    fileprivate func loadData(_ self: AlbumViewController, _ sections: [AlbumSectionModel]) {
+        self.hideProgress()
+        self.sections = sections
+        self.sectionsBackup = sections
+        self.albumTableView.reloadWithAnimation()
+    }
+
     /// Request to fetch Albums to populate in tbaleview
     func fetchAlbums() {
         guard Reachability.isConnectedToNetwork else {
             self.albumTableView.setEmptyMessage("Please connect to internet", with: UIImage(named: "noWifi"))
             return
         }
+
         self.showProgress()
-        viewModel?.getAlbums(with: Constants.Apis.albumUrl, completion: { [weak self] (albums: [AlbumModel]) in
-            self?.viewModel?.prepareDataSource(albums: albums, completion: { [weak self] (sections) in
-                self?.hideProgress()
-                self?.sections = sections
-                self?.sectionsBackup = sections
-                self?.albumTableView.reloadWithAnimation()
-            })
-        })
+        if #available(iOS 15.0.0, *) {
+            Task {
+                let sections = await viewModel.getAlbums()
+                self.loadData(self, sections)
+            }
+        } else {
+            viewModel?.getAlbums { [weak self] (sections: [AlbumSectionModel]) in
+                guard let self = self else {return}
+                self.loadData(self, sections)
+
+            }
+
+        }
+
     }
     func dismissDropDown() {
         self.dropDownButton?.dismissDropDown()

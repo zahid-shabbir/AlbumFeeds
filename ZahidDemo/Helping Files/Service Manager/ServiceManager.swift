@@ -60,6 +60,26 @@ func makeRequest<T: Codable>(of requestable: WebServiceProtocol, params: ParamsT
 
 }
 
+@available(iOS 15.0.0, *)
+func makeRequest<T: Codable>(of requestable: WebServiceProtocol, params: ParamsType = nil, showProgress: Bool = true) async -> T? {
+
+    guard let request =  requestable.getRequest(params: params) else {
+        return (nil) // , "Bad Request")
+    }
+
+    do {
+        let (data, _) =  try await URLSession.shared.data(for: request)
+        data.printPretty()
+//        let parsedData =  await data.parse()
+         let parsedData =  try JSONDecoder().decode(T.self, from: data)
+        return parsedData
+
+    } catch let error {
+        print(error)
+        return (nil)// , "Bad Request")
+    }
+
+}
 /// Using this function for new routes for new url
 
 extension URL {

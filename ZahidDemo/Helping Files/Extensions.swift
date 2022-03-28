@@ -227,6 +227,50 @@ extension Data {
 
         }
     }
+
+    @available(iOS 15.0.0, *)
+    func parse<T: Codable>() async -> (T?, String?) {
+
+        do {
+            let result = try JSONDecoder().decode(T.self, from: self)
+            return (result, "no error")
+        } catch let DecodingError.dataCorrupted(context) {
+            print(context)
+            var message = context.debugDescription
+            print("not found:\n", message)
+            message.append(self.string(encoding: .utf8).safeString)
+
+            return(nil, message)
+
+        } catch let DecodingError.keyNotFound(key, context) {
+            var message = "Key \(key ) not found: \(context.debugDescription)"
+            message.append("\n codingPath: \(context.codingPath)\n")
+            message.append(self.string(encoding: .utf8).safeString)
+            print(message)
+
+            return(nil, message)
+
+        } catch let DecodingError.valueNotFound(value, context) {
+            var message = "Value \(value ) not found: \(context.debugDescription)"
+            message.append("\n codingPath: \(context.codingPath)\n")
+            message.append(self.string(encoding: .utf8).safeString)
+            print(message)
+
+            return(nil, message)
+
+        } catch let DecodingError.typeMismatch(type, context) {
+            var message = "Type \(type) mismatch: \(context.debugDescription)"
+            message.append("\n codingPath: \(context.codingPath)\n")
+            message.append(self.string(encoding: .utf8).safeString)
+            print(message)
+
+            return(nil, message)
+        } catch {
+            print("error: ", "\(error)")
+            return(nil, "codingPath: \(error.localizedDescription)")
+
+        }
+    }
 }
 
 extension Dictionary {
