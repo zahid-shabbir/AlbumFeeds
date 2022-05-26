@@ -94,7 +94,7 @@ extension UITableView {
             delayCounter += 1
         }
     }
-    func setEmptyMessage(_ message: String, with image: UIImage?) {
+    func showMessage(_ message: String, with image: UIImage?) {
         DispatchQueue.main.async {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
             let imageView = UIImageView(frame: CGRect(x: view.frame.width/2 - 26, y: view.frame.height/2 - 72, width: 52, height: 52))
@@ -182,53 +182,6 @@ extension Data {
         return String(data: self, encoding: encoding)
     }
 
-    func parseTo<T: Codable>(completion: @escaping (T?, String?) -> Void) {
-
-        do {
-            let result = try JSONDecoder().decode(T.self, from: self)
-            DispatchQueue.main.async {
-                completion(result, nil)
-            }
-
-        } catch let DecodingError.dataCorrupted(context) {
-            print(context)
-            var message = context.debugDescription
-            print("not found:\n", message)
-            message.append(self.string(encoding: .utf8).safeString)
-
-            completion(nil, message)
-
-        } catch let DecodingError.keyNotFound(key, context) {
-            var message = "Key \(key ) not found: \(context.debugDescription)"
-            message.append("\n codingPath: \(context.codingPath)\n")
-            message.append(self.string(encoding: .utf8).safeString)
-            print(message)
-
-            completion(nil, message)
-
-        } catch let DecodingError.valueNotFound(value, context) {
-            var message = "Value \(value ) not found: \(context.debugDescription)"
-            message.append("\n codingPath: \(context.codingPath)\n")
-            message.append(self.string(encoding: .utf8).safeString)
-            print(message)
-
-            completion(nil, message)
-
-        } catch let DecodingError.typeMismatch(type, context) {
-            var message = "Type \(type) mismatch: \(context.debugDescription)"
-            message.append("\n codingPath: \(context.codingPath)\n")
-            message.append(self.string(encoding: .utf8).safeString)
-            print(message)
-
-            completion(nil, message)
-        } catch {
-            print("error: ", "\(error)")
-            completion(nil, "codingPath: \(error.localizedDescription)")
-
-        }
-    }
-
-    @available(iOS 15.0.0, *)
     func parse<T: Codable>() async -> (T?, String?) {
 
         do {

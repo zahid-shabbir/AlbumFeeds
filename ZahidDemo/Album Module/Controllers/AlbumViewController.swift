@@ -20,7 +20,7 @@ class AlbumViewController: BaseViewController, UISearchBarDelegate {
     var sections: [AlbumSectionModel] = [] {
         didSet {
             if sections.count == 0 {
-                self.albumTableView.setEmptyMessage("Album is not available", with: UIImage(named: "not-found"))
+                self.albumTableView.showMessage("Album is not available", with: UIImage(named: "not-found"))
             } else {
                 self.albumTableView.backgroundView = nil
             }
@@ -143,23 +143,14 @@ extension AlbumViewController {
     /// Request to fetch Albums to populate in tbaleview
     func fetchAlbums() {
         guard Reachability.isConnectedToNetwork else {
-            self.albumTableView.setEmptyMessage("Please connect to internet", with: UIImage(named: "noWifi"))
+            self.albumTableView.showMessage("Please connect to internet", with: UIImage(named: "noWifi"))
             return
         }
 
         self.showProgress()
-        if #available(iOS 15.0.0, *) {
-            Task {
-                let sections = await viewModel.getAlbums()
-                self.loadData(self, sections)
-            }
-        } else {
-            viewModel?.getAlbums { [weak self] (sections: [AlbumSectionModel]) in
-                guard let self = self else {return}
-                self.loadData(self, sections)
-
-            }
-
+        Task {
+            let sections = await viewModel.getAlbums()
+            self.loadData(self, sections)
         }
 
     }

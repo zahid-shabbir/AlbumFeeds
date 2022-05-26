@@ -10,19 +10,12 @@ class UserViewModal {
     /// - Parameters:
     ///   - url: url string of your request
     ///   - completion: on completion it'll return `[AlbumModel]`
-    @available(iOS 15.0.0, *)
+
     func getAlbums() async -> [AlbumSectionModel] {
 
         let albums: [AlbumModel]?  = await makeRequest(of: AlbumService.getAlbums)
         return  self.prepareDataSource(albums: albums ?? [])
-        
-    }
 
-    func getAlbums(completion: @escaping ([AlbumSectionModel]) -> Void ) {
-        makeRequest(of: AlbumService.getAlbums) { (albums: [AlbumModel]?, _) in
-            let final = self.prepareDataSource(albums: albums ?? [])
-            completion(final)
-        }
     }
 
     /// It prepare our `[AlbumModel]` to `[AlbumSectionModel]`

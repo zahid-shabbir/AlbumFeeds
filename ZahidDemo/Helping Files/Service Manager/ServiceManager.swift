@@ -18,50 +18,10 @@ typealias RuquestCompletion<T: Codable> = (T?, _ error: String?) -> Void
 ///   - params: a doctionary of params defualt is nil
 ///   - completion: a completion that returns parsed modal of type codable that's sent and error message of type string
 /// - Returns: it returns nothing but through `completion`
-func makeRequest<T: Codable>(of requestable: WebServiceProtocol, params: ParamsType = nil, showProgress: Bool = true, completion: @escaping (T?, _ error: String?) -> Void) {
 
-    guard let request =  requestable.getRequest(params: params) else {
-        completion(nil, "Bad Request")
-        return
-    }
 
-    request.asyncFetch { data, _, error in
-
-        guard error  == nil  else {
-            completion(nil, error?.localizedDescription)
-            return
-        }
-        guard let data = data else {
-            completion(nil, error?.localizedDescription)
-            return
-        }
-        /*
-         print("----------------------------------------------------------------")
-         print("API URL STRING: \((self.request.url?.absoluteString).safeString)")
-         print("API REQUEST METHOD: \((self.request.method?.rawValue).safeString)")
-         if let body = request.httpBody {
-             print("API PARAMETERS: \(body.printPretty())")
-         }
-         print("API ACESS TOKEN: \(request.headers)")
-         print("----------------------------------------------------------------")
-         }*/
-        data.printPretty()
-        data.parseTo { (products: T?, error) in
-            guard let result = products else {
-                print(error as Any)
-                completion(nil, "Bad Request")
-                return
-            }
-            DispatchQueue.main.async {
-                completion(result, nil)
-            }
-        }
-    }
-
-}
-
-@available(iOS 15.0.0, *)
-func makeRequest<T: Codable>(of requestable: WebServiceProtocol, params: ParamsType = nil, showProgress: Bool = true) async -> T? {
+func makeRequest<T: Codable>(of requestable: WebServiceProtocol,
+                             params: ParamsType = nil, showProgress: Bool = true) async -> T? {
 
     guard let request =  requestable.getRequest(params: params) else {
         return (nil) // , "Bad Request")
